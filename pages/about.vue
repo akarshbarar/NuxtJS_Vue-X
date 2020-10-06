@@ -4,8 +4,14 @@
         <Navtwo/>
         <h1>Hi i am About page</h1>
         <p class="subheading">Trying VueX</p>
-        <input v-model="message" placeholder="edit me">
-        <p>Message is: {{ message }}</p>
+        
+        <form @submit.prevent="addData">
+          <input v-model="message" placeholder="edit me">
+          <p>Message is: {{ message }}</p>
+          <button type="submit">Add</button>
+        </form>
+        <button @click.prevent="login">Login</button>
+
         <div class="buttons">
         <button v-on:click="decrement">-</button>
         <h1>Counter is : {{counter}} </h1>
@@ -19,7 +25,9 @@ import Navtwo from '../layouts/Partials/nav2'
 import { mapMutations } from 'vuex'
 import { mapState } from 'vuex'
 
+
 export default {
+      loading: true,
       computed:{
         ...mapState({
             counter:state=>state.counter
@@ -44,18 +52,21 @@ export default {
     },
   
   methods:{
-       ...mapMutations({
-            increment:"increment",
-            decrement:"decrement"
-          }),
+       login:function(){
+         console.log('====================================');
+         console.log("Login clicked",this.$router);
+         console.log('====================================');
+        this.$router.push({ path: '/login' })
+       },
       decrement:function(e){
           console.log("IN dec");
            this.$store.commit('dec')
-          
-          
       },
       increment:function(e){
            this.$store.commit('inc')
+      },
+      addData:function(){
+        this.$store.commit('add',this.message)
       }
   }
 

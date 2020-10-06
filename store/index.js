@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 export const state = () => ({
-    counter: 1000
+    counter: 1000,
+    list:[],
   });
   
   
@@ -12,6 +13,9 @@ export const state = () => ({
     },
     dec(state) {        
         state.counter--
+      },
+      add(state,data){
+        state.list.push(data)
       }
   }
   
