@@ -1,4 +1,7 @@
-# nuxty
+# Hi I am Akarsh Barar
+Here is the first project on NuxtJs and is deployed on following link
+https://nuxt-js-vue-x.vercel.app/
+
 
 ## Build Setup
 
